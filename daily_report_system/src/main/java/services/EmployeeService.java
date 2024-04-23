@@ -9,8 +9,8 @@ import actions.views.EmployeeConverter;
 import actions.views.EmployeeView;
 import constants.JpaConst;
 import models.Employee;
-import models.validators.EmployeeValidator;
 import utils.EncryptUtil;
+import validators.EmployeeValidator;
 
 /**
  * 従業員テーブルの操作に関わる処理を行うクラス
@@ -110,7 +110,7 @@ public class EmployeeService extends ServiceBase {
         ev.setUpdatedAt(now);
 
         //登録内容のバリデーションを行う
-        List<String> errors = EmployeeValidator.validate(this, ev, true, true);
+        List<String> errors = models.validators.EmployeeValidator.validate(this, ev, true, true);
 
         //バリデーションエラーがなければデータを登録する
         if (errors.size() == 0) {
@@ -162,7 +162,7 @@ public class EmployeeService extends ServiceBase {
         savedEmp.setUpdatedAt(today);
 
         //更新内容についてバリデーションを行う
-        List<String> errors = EmployeeValidator.validate(this, savedEmp, validateCode, validatePass);
+        List<String> errors = models.validators.EmployeeValidator.validate(this, savedEmp, validateCode, validatePass);
 
         //バリデーションエラーがなければデータを更新する
         if (errors.size() == 0) {
