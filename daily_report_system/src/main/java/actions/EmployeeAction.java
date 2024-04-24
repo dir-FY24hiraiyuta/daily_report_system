@@ -10,6 +10,7 @@ import constants.AttributeConst;
 import constants.ForwardConst;
 import constants.JpaConst;
 import constants.MessageConst;
+import constants.PropertyConst;
 import services.EmployeeService;
 
 /**
@@ -109,15 +110,7 @@ public class EmployeeAction extends ActionBase {
                 redirect(ForwardConst.ACT_EMP, ForwardConst.CMD_INDEX);
             }
         }
-    }
-    /**
-     * 更新を行う
-     * @throws ServletException
-     * @throws IOException
-     */
-    public void update() throws ServletException, IOException {
-
-        //CSRF対策 tokenのチェック
+         //CSRF対策 tokenのチェック
         if (checkToken()) {
             //パラメータの値を元に従業員情報のインスタンスを作成する
             EmployeeView ev = new EmployeeView(

@@ -110,7 +110,7 @@ public class EmployeeService extends ServiceBase {
         ev.setUpdatedAt(now);
 
         //登録内容のバリデーションを行う
-        List<String> errors = models.validators.EmployeeValidator.validate(this, ev, true, true);
+        List<String> errors = validators.EmployeeValidator.validate(this, ev, true, true);
 
         //バリデーションエラーがなければデータを登録する
         if (errors.size() == 0) {
@@ -162,7 +162,7 @@ public class EmployeeService extends ServiceBase {
         savedEmp.setUpdatedAt(today);
 
         //更新内容についてバリデーションを行う
-        List<String> errors = models.validators.EmployeeValidator.validate(this, savedEmp, validateCode, validatePass);
+        List<String> errors = validators.EmployeeValidator.validate(this, savedEmp, validateCode, validatePass);
 
         //バリデーションエラーがなければデータを更新する
         if (errors.size() == 0) {
